@@ -55,6 +55,10 @@ public class Barbero {
     public String toString() {
         return "Nombre:  " + nombre + " , " + "Hora de almuerzo:  " + horaAlmuerzo;
     }
+
+    String barberos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }

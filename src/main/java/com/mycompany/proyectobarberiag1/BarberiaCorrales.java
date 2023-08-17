@@ -16,6 +16,7 @@ public class BarberiaCorrales {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         //VARIABLES
         String hora = "";
         int fila = 0;
@@ -36,14 +37,18 @@ public class BarberiaCorrales {
             }
         }
 
-        //MOSTRAR AGENDA
-        mostrarCale(calendario);
+        //OBJETOS
         Cliente cli = new Cliente();
         Barbero bar = new Barbero();
         Calendario cale = new Calendario();
         Barbero barb[] = new Barbero[5];
 
-        barb[0] = new Barbero("Luis", 11 );
+        JOptionPane.showMessageDialog(null, """
+                                            ----------------------Bienvenidos a la Barberia Corrales----------------------
+                                             
+                                             Estilo y Precisi\u00f3n en Cada Corte: Tu Elegancia, Nuestra Pasi\u00f3n""");
+
+        barb[0] = new Barbero("Luis", 11);
         barb[1] = new Barbero("Jose", 11);
         barb[2] = new Barbero("Javier", 12);
         barb[3] = new Barbero("Alberto", 12);
@@ -54,7 +59,7 @@ public class BarberiaCorrales {
 
             System.out.println(i + " " + barb[i]);
         }
-
+        
         
 
         int op = 1;
@@ -63,12 +68,11 @@ public class BarberiaCorrales {
 
             op = Integer.parseInt(
                     JOptionPane.showInputDialog(null, "***Menu Barbería Corrales***\n"
-                            + "1. Consultar barberos\n"
-                            + "2. Consultar horarios de almuerzo\n"
-                            + "3. Consultar agenda semanal\n"
-                            + "4. Reservacion de cita \n"
-                            + "5. Devolución de cita \n"
-                            + "6. Revisión de agenda barberos \n"
+                            + "1. Consultar barberos y horarios de almuerzo\n"
+                            + "2. Consultar agenda semanal\n"
+                            + "3. Reservacion de cita \n"
+                            + "4. Devolución de cita \n"
+                            + "5. Revisión de agenda barberos \n"
                             + "0. Salir\n"
                             + "Digite su opción: ", "Menu Principal", JOptionPane.QUESTION_MESSAGE));
             switch (op) {
@@ -76,32 +80,20 @@ public class BarberiaCorrales {
                 case 1:
                     //CONSULTAR BARBEROS
                     System.out.println();
-                    for (int i = 0; i < barb.length; i++) {
-                        System.out.println(i + " " + barb[i]);
-                    }
-
+                    JOptionPane.showMessageDialog(null, barb);
                     break;
-                    
+
                 case 2:
-                    //CONSULTAR HORARIOS DE ALMUERZO
-                    System.out.println();
-                    for (int i = 0; i < barb.length; i++) {
-                        System.out.println(i + " " + barb[i]);
-                    }
-                    System.out.println();
-                    break;
-
-                case 3:
                     //CONSULTAR AGENDA SEMANAL
                     mostrarCale(calendario);
                     break;
-                    
-                case 4:
+
+                case 3:
                     cli.setNombre(JOptionPane.showInputDialog("Indique el nombre del cliente: "));
                     cli.setTelefono(JOptionPane.showInputDialog("Indique el telefono del cliente: "));
 
                     //CANTIDAD DE CITAS POR RESERVAR (DIAS)
-                    int cantidadCitas = Integer.parseInt(JOptionPane.showInputDialog("Indique el numero de dias que desea reservar:"));
+                    int cantidadCitas = 1;
 
                     //RESERVACION EN AGENDA SEMANAL
                     for (int k = 0; k < cantidadCitas; k++) {
@@ -156,10 +148,14 @@ public class BarberiaCorrales {
                             double impuesto = unaHoraFin * IVA;
                             double total = unaHoraFin + impuesto;
                             
-                            JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] + " \n3." + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
+                            JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] 
+                                    + " \n2." + barb[1] + " \n3." + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
 
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n " +"Telefono del cliente: " + cli.getTelefono() + "\n " +"Hora de cita: " + hora + "\n " +"Total a pagar (con IVA): " + total + "\n " + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                         
                         } else if (cli.getRangoHoras() == 2) {
@@ -170,7 +166,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] + " \n3." + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                             
                         } else if (cli.getRangoHoras() == 3) {
@@ -181,7 +180,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] + " \n.3" + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                             
                         } else if (cli.getRangoHoras() == 4) {
@@ -192,7 +194,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[2] + " \n2." + barb[3] + " \n3." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                             
                         } else if (cli.getRangoHoras() == 5) {
@@ -203,7 +208,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] +  " \n3." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                             
                         } else if (cli.getRangoHoras() == 6) {
@@ -214,7 +222,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n0." + barb[0] + " \n1." + barb[1] + " \n2." + barb[2] + " \n3." + barb[3] );
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                             
                             
@@ -226,7 +237,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] + " \n3." + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n" + barb[num]);
                             
                             
@@ -238,7 +252,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] + " \n3." + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() +"\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                             
                             
@@ -250,7 +267,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] + " \n3." + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                             
                         } else if (cli.getRangoHoras() == 10) {
@@ -261,7 +281,10 @@ public class BarberiaCorrales {
                             JOptionPane.showMessageDialog(null, "Los barberos disponibles son: \n1." + barb[0] + " \n2." + barb[1] + " \n3." + barb[2] + " \n4." + barb[3] + " \n5." + barb[4]);
                             int num = Integer.parseInt(JOptionPane.showInputDialog("Elija un barbero"));
                             
-                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() + "\n" + "Telefono del cliente: " + cli.getTelefono() + "\n" + "Hora de cita: " + hora + "\n" + "Total a pagar:" + total + "\n" + "\n" + barb[num]);
+                            JOptionPane.showMessageDialog(null, "Nombre del cliente :" + cli.getNombre() 
+                                    +"\n Telefono del cliente: "+ cli.getTelefono() +"\n Hora de cita: " 
+                                    + hora+"\n Total a pagar (con IVA):  "+ total +"colones "+"\n"+"\n Información del Barbero: "
+                                    +"\n" + barb[num]);
                             System.out.print("Nombre del cliente:" + cli.getNombre() + "\nTelefono: " + cli.getTelefono() + "\n Hora: " + hora + "\n total a pagar:" + total + "\n " + barb[num]);
                         }
                         
@@ -272,53 +295,53 @@ public class BarberiaCorrales {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 8 am a 9 am \n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
 
                         } else if (cli.getRangoHoras() == 2) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 9 am a 10 am\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 3) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 10 am 11 am \n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 4) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 11 am a 12 md\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 5) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 12 md a 1 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 6) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 1 pm a 2 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 7) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 2 pm a 3 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 8) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 3 pm a 4 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 9) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 4 pm a 5 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 10) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 5 pm a 6 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         }
                     } else if (fila == 0 && colum == 2) {
                         if (cli.getRangoHoras() == 1) {
@@ -326,53 +349,53 @@ public class BarberiaCorrales {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 8 am a 9 am \n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
 
                         } else if (cli.getRangoHoras() == 2) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 9 am a 10 am\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 3) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 10 am 11 am \n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 4) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 11 am a 12 md\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 5) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 12 md a 1 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 6) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 1 pm a 2 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 7) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 2 pm a 3 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 8) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 3 pm a 4 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 9) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 4 pm a 5 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 10) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 5 pm a 6 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         }
                     } else if (fila == 0 && colum == 3) {
                         if (cli.getRangoHoras() == 1) {
@@ -380,53 +403,53 @@ public class BarberiaCorrales {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 8 am a 9 am \n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
 
                         } else if (cli.getRangoHoras() == 2) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 9 am a 10 am\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 3) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 10 am 11 am \n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 4) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 11 am a 12 md\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 5) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 12 md a 1 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 6) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 1 pm a 2 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 7) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 2 pm a 3 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 8) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 3 pm a 4 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 9) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 4 pm a 5 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         } else if (cli.getRangoHoras() == 10) {
                             double impuesto = unaHoras * IVA;
                             double total = unaHoras + impuesto;
                             JOptionPane.showMessageDialog(null, "La hora de reservacion es 5 pm a 6 pm\n"
-                                    + "Total a pagar =" + total);
+                                    + "Total a pagar =" + total+ "colones");
                         }
                     } else if (fila == 0 && colum == 4) {
                         if (cli.getRangoHoras() == 1) {
@@ -594,14 +617,14 @@ public class BarberiaCorrales {
                    
 
                     break;
-                case 5:
+                case 4:
                     //DEVOLUCION DE ESPACIOS
                     
                     
                     
                     break;
                 
-                case 6:
+                case 5:
                     //REVISION DE AGENDA
                     
                     
